@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
 
         spawnPosition = cam.transform.position + cam.transform.forward * 10f;
         spawnPosition.y = temp;
-        Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        var spawnedGoalPost = Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        spawnedGoalPost.transform.forward = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z);
         spawningGoalPostPanel.SetActive(false);
     }
 
