@@ -7,15 +7,30 @@ using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] private GameObject planePrefab;
     [SerializeField] private GameObject ballPrefab;
-    [SerializeField] private GameObject _xrOrigin;
+    [SerializeField] private GameObject goalPostPrefab;
 
     [Space]
+    [Header("Camera")]
     [SerializeField] private Camera cam;
+
+    [Space]
+    [Header("UI Panels")]
+    [SerializeField] private GameObject lookDownCommandPanel;
+    [SerializeField] private GameObject spawningBallPanel;
+    [SerializeField] private GameObject spawningGoalPostPanel;
+
+    [Space]
+    [SerializeField] private GameObject _XROriginGameObject;
 
     private void Start()
     {
+        lookDownCommandPanel.SetActive(true);
+        spawningBallPanel.SetActive(false);
+        spawningGoalPostPanel.SetActive(false);
+
         StartCoroutine(SpawnPlane());
     }
 
@@ -24,9 +39,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Vector3 spawnPosition = cam.transform.position;
 
-        ARPlaneManager planeManager = _xrOrigin.GetComponent<ARPlaneManager>();
+        ARPlaneManager planeManager = _XROriginGameObject.GetComponent<ARPlaneManager>();
         if (planeManager != null)
         {
+            while (planeManager.trackables.count <= 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
             planeManager.enabled = false;
 
             foreach (var plane in planeManager.trackables)
@@ -37,13 +57,26 @@ public class GameManager : MonoBehaviour
         }
 
         Instantiate(planePrefab, spawnPosition, Quaternion.identity);
+        lookDownCommandPanel.SetActive(false);
+        spawningBallPanel.SetActive(true);
 
         float temp = spawnPosition.y;
+
+        yield return new WaitForSeconds(5f);
+
         spawnPosition = cam.transform.position + cam.transform.forward * 3f;
         spawnPosition.y = temp + 5f;
 
-        yield return new WaitForSeconds(5f);
         Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        spawningBallPanel.SetActive(false);
+        spawningGoalPostPanel.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        spawnPosition = cam.transform.position + cam.transform.forward * 10f;
+        spawnPosition.y = temp;
+        Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        spawningGoalPostPanel.SetActive(false);
     }
 
 }
