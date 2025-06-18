@@ -62,16 +62,16 @@ public class GameManager : MonoBehaviour
 
         float temp = spawnPosition.y;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         spawnPosition = cam.transform.position + cam.transform.forward * 3f;
-        spawnPosition.y = temp + 5f;
+        spawnPosition.y = temp + 3f;
 
         Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(true);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         spawnPosition = cam.transform.position + cam.transform.forward * 10f;
         spawnPosition.y = temp;

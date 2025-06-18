@@ -1615,7 +1615,7 @@ MonoBehaviour:
     type: 3}
   ballPrefab: {fileID: 7672922727470184006, guid: 1096b788f77b527468ecd84c6990b6c6,
     type: 3}
-  goalPostPrefab: {fileID: 919132149155446097, guid: 6f6e8d40e5fd48141a0e1943b31639f7,
+  goalPostPrefab: {fileID: 4829156508728318180, guid: 9dc7d88837ff8834881db427656f2cda,
     type: 3}
   cam: {fileID: 375900083}
   lookDownCommandPanel: {fileID: 2045834126}
