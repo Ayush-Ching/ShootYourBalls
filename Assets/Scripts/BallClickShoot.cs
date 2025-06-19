@@ -13,7 +13,7 @@ public class BallClickShoot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
             rb.isKinematic = false;
-            rb.AddForce(Camera.main.transform.up * 500f); // Adjust force as needed
-            rb.AddForce(Camera.main.transform.forward * 500f); // Adjust force as needed
+            rb.AddForce(Camera.main.transform.up * 500f);
+            rb.AddForce(Camera.main.transform.forward * 500f);
     }
 }
