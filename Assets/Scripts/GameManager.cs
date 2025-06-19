@@ -139,16 +139,16 @@ public class GameManager : MonoBehaviour
 
         floorHeight = spawnPosition.y;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
-        spawnPosition = cam.transform.position + cam.transform.forward * 3f;
+        spawnPosition = cam.transform.position + cam.transform.forward * 2f;
         spawnPosition.y = floorHeight + 1f;
 
         spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         spawnPosition = cam.transform.position + cam.transform.forward * 10f;
         spawnPosition.y = floorHeight;
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
         Destroy(spawnedBall);
 
         Vector3 spawnPosition;
-        spawnPosition = cam.transform.position + cam.transform.forward * 3f;
+        spawnPosition = cam.transform.position + cam.transform.forward * 2f;
         spawnPosition.y = floorHeight + 1f;
 
         spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
