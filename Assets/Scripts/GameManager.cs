@@ -4,12 +4,14 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private int numberOfGoalsToWin = 3;
+    [SerializeField] private int numberOfBalls = 5;
 
     [Space]
     [Header("Prefabs")]
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject spawningBallPanel;
     [SerializeField] private GameObject spawningGoalPostPanel;
     [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private GameObject defeatPanel;
 
     [Space]
     [SerializeField] private GameObject pointsTextObject;
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(false);
         victoryPanel.SetActive(false);
+        defeatPanel.SetActive(false);
         pointsTextObject.SetActive(false);
 
         StartCoroutine(SpawnEverything());
@@ -71,16 +75,18 @@ public class GameManager : MonoBehaviour
                 timer = 0;
                 Destroy(spawnedBall, 2f);
                 Destroy(spawnedGoalPost, 4f);
+                return;
             }
             else
             {
                 StartCoroutine(SpawnNextBall());
+                return;
             }
         }
 
         if (hasGameStarted)
         {
-            pointsText.text = $"\n\n     Points : {points}";
+            pointsText.text = $"\n\n     Points : {points}\n     Balls Left : {numberOfBalls}";
         }
 
         if(spawnedBall!= null && spawnedBall.GetComponent<BallSwipeShoot>().ballWasSwiped)
@@ -90,7 +96,18 @@ public class GameManager : MonoBehaviour
             if(timer > 3f)
             {
                 StartCoroutine(SpawnNextBall());
+                return;
             }
+        }
+
+        if(numberOfBalls <= 0)
+        {
+            defeatPanel.SetActive(true);
+
+            timer = 0;
+            Destroy(spawnedBall, 2f);
+            Destroy(spawnedGoalPost, 4f);
+            return;
         }
     }
 
@@ -146,6 +163,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator SpawnNextBall()
     {
         timer = 0;
+        numberOfBalls--;
 
         yield return new WaitForSeconds(1f);
 
@@ -157,5 +175,4 @@ public class GameManager : MonoBehaviour
 
         spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
     }
-
 }
