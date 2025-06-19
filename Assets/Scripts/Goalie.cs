@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goalie : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
+    public float moveSpeed = 3f;
 
     private Rigidbody rb;
     private GameObject goToMark;

@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         {
             spawnedBall.GetComponent<BallManager>().wasVictoryAlreadyConfirmed = true;
             points++;
+            spawnedGoalPost.GetNamedChild("Motu").GetComponent<Goalie>().moveSpeed *= 1.5f;
 
             if (points >= numberOfGoalsToWin)
             {
