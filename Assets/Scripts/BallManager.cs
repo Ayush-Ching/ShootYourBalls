@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class BallManager : MonoBehaviour
 {
-    public GameObject ballPrefab;
-    public Transform arCamera;
-    private GameObject currentBall;
+    public bool hasWon;
+    public bool wasVictoryAlreadyConfirmed = false;
 
-    void Start()
+
+    public BallManager()
     {
-        SpawnBall();
+        hasWon = false;
     }
 
-    public void SpawnBall()
+    private void OnTriggerEnter(Collider other)
     {
-        if (currentBall != null) Destroy(currentBall);
-
-        Vector3 spawnPos = arCamera.position + arCamera.forward * 1f;
-        currentBall = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
+        if (other.gameObject.CompareTag("Goal"))
+        {
+            hasWon = true;
+        }
     }
 }

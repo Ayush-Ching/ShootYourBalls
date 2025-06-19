@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Stats")]
+    [SerializeField] private int numberOfGoalsToWin = 3;
+
+    [Space]
     [Header("Prefabs")]
     [SerializeField] private GameObject planePrefab;
     [SerializeField] private GameObject ballPrefab;
@@ -21,20 +26,62 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject lookDownCommandPanel;
     [SerializeField] private GameObject spawningBallPanel;
     [SerializeField] private GameObject spawningGoalPostPanel;
+    [SerializeField] private GameObject victoryPanel;
+
+    [Space]
+    [SerializeField] private GameObject pointsTextObject;
 
     [Space]
     [SerializeField] private GameObject _XROriginGameObject;
 
+    private GameObject spawnedGoalPost;
+    private GameObject spawnedBall;
+    private float floorHeight;
+    private int points = 0;
+    private TextMeshProUGUI pointsText;
+    private bool hasGameStarted;
+
     private void Start()
     {
+        points = 0;
+        hasGameStarted = false;
+
         lookDownCommandPanel.SetActive(true);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(false);
+        victoryPanel.SetActive(false);
+        pointsTextObject.SetActive(false);
 
-        StartCoroutine(SpawnPlane());
+        StartCoroutine(SpawnEverything());
     }
 
-    private IEnumerator SpawnPlane()
+    private void Update()
+    {
+        if(spawnedBall != null && !spawnedBall.GetComponent<BallManager>().wasVictoryAlreadyConfirmed && spawnedBall.GetComponent<BallManager>().hasWon)
+        {
+            spawnedBall.GetComponent<BallManager>().wasVictoryAlreadyConfirmed = true;
+            points++;
+
+            if (points >= numberOfGoalsToWin)
+            {
+                victoryPanel.SetActive(true);
+
+                Destroy(spawnedBall, 2f);
+                Destroy(spawnedGoalPost, 4f);
+            }
+            else
+            {
+                StartCoroutine(SpawnNextBall());
+            }
+        }
+
+        if (hasGameStarted)
+        {
+            pointsText.text = $"\n\n     Points : {points}";
+        }
+    }
+
+    private IEnumerator SpawnEverything()
     {
         yield return new WaitForSeconds(2f);
         Vector3 spawnPosition = cam.transform.position;
@@ -60,24 +107,40 @@ public class GameManager : MonoBehaviour
         lookDownCommandPanel.SetActive(false);
         spawningBallPanel.SetActive(true);
 
-        float temp = spawnPosition.y;
+        floorHeight = spawnPosition.y;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         spawnPosition = cam.transform.position + cam.transform.forward * 3f;
-        spawnPosition.y = temp + 3f;
+        spawnPosition.y = floorHeight + 1f;
 
-        Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(true);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         spawnPosition = cam.transform.position + cam.transform.forward * 10f;
-        spawnPosition.y = temp;
-        var spawnedGoalPost = Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        spawnPosition.y = floorHeight;
+        spawnedGoalPost = Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
         spawnedGoalPost.transform.forward = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z);
         spawningGoalPostPanel.SetActive(false);
+        pointsTextObject.SetActive(true);
+        pointsText = pointsTextObject.GetComponent<TextMeshProUGUI>();
+        hasGameStarted = true;
+    }
+
+    private IEnumerator SpawnNextBall()
+    {
+        yield return new WaitForSeconds(1f);
+
+        Destroy(spawnedBall);
+
+        Vector3 spawnPosition;
+        spawnPosition = cam.transform.position + cam.transform.forward * 3f;
+        spawnPosition.y = floorHeight + 1f;
+
+        spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
     }
 
 }
