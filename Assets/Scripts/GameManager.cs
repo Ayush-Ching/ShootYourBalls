@@ -40,11 +40,13 @@ public class GameManager : MonoBehaviour
     private int points = 0;
     private TextMeshProUGUI pointsText;
     private bool hasGameStarted;
+    private float timer;
 
     private void Start()
     {
         points = 0;
         hasGameStarted = false;
+        timer = 0;
 
         lookDownCommandPanel.SetActive(true);
         spawningBallPanel.SetActive(false);
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
             {
                 victoryPanel.SetActive(true);
 
+                timer = 0;
                 Destroy(spawnedBall, 2f);
                 Destroy(spawnedGoalPost, 4f);
             }
@@ -78,6 +81,16 @@ public class GameManager : MonoBehaviour
         if (hasGameStarted)
         {
             pointsText.text = $"\n\n     Points : {points}";
+        }
+
+        if(spawnedBall!= null && spawnedBall.GetComponent<BallSwipeShoot>().ballWasSwiped)
+        {
+            timer += Time.deltaTime;
+
+            if(timer > 3f)
+            {
+                StartCoroutine(SpawnNextBall());
+            }
         }
     }
 
@@ -132,6 +145,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnNextBall()
     {
+        timer = 0;
+
         yield return new WaitForSeconds(1f);
 
         Destroy(spawnedBall);

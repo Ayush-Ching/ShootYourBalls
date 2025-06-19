@@ -1977,9 +1977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db3fb8ca29ed5648983d59b7a462c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfGoalsToWin: 3
   planePrefab: {fileID: 3681518269298309379, guid: 190bf49efbab60e458b67c1dcb5421dc,
     type: 3}
-  ballPrefab: {fileID: 7672922727470184006, guid: 1096b788f77b527468ecd84c6990b6c6,
+  ballPrefab: {fileID: 6486507733914188704, guid: 0f861297d2da0334e904d2afd34f4c99,
     type: 3}
   goalPostPrefab: {fileID: 4829156508728318180, guid: 9dc7d88837ff8834881db427656f2cda,
     type: 3}
@@ -1987,7 +1988,6 @@ MonoBehaviour:
   lookDownCommandPanel: {fileID: 2045834126}
   spawningBallPanel: {fileID: 30951019}
   spawningGoalPostPanel: {fileID: 1211220790}
-  pointsPanel: {fileID: 0}
   victoryPanel: {fileID: 1959754449}
   pointsTextObject: {fileID: 590000141}
   _XROriginGameObject: {fileID: 2025750118}

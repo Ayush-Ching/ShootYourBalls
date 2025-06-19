@@ -9,9 +9,12 @@ public class BallSwipeShoot : MonoBehaviour
 
     [SerializeField] private float forceMultiplier = 0.05f;
 
+    public bool ballWasSwiped;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        ballWasSwiped = false;
     }
 
     void Update()
@@ -60,5 +63,6 @@ public class BallSwipeShoot : MonoBehaviour
 
         rb.isKinematic = false;
         rb.AddForce(forceDir * swipeLength * forceMultiplier, ForceMode.Impulse);
+        ballWasSwiped = true;
     }
 }
