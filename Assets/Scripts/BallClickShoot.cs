@@ -7,7 +7,7 @@ public class BallSwipeShoot : MonoBehaviour
     private Vector2 swipeEndPos;
     private bool isSwiping = false;
 
-    [SerializeField] private float forceMultiplier = 0.05f; // You can tweak this in Inspector
+    [SerializeField] private float forceMultiplier = 0.05f;
 
     void Start()
     {
