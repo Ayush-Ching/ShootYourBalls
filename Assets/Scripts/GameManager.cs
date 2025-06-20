@@ -74,9 +74,10 @@ public class GameManager : MonoBehaviour
                 victoryPanel.SetActive(true);
 
                 timer = 0;
-                Destroy(spawnedBall, 2f);
-                Destroy(spawnedGoalPost.GetNamedChild("Motu"), 3f);
-                Destroy(spawnedGoalPost, 4f);
+                numberOfBalls = numberOfBalls - 1;
+                Destroy(spawnedBall, 1f);
+                Destroy(spawnedGoalPost.GetNamedChild("Motu"), 2f);
+                Destroy(spawnedGoalPost, 3f);
                 return;
             }
             else
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
             pointsText.text = $"\n\n     Points : {points}\n     Balls Left : {numberOfBalls}";
         }
 
-        if(spawnedBall!= null && spawnedBall.GetComponent<BallSwipeShoot>().ballWasSwiped)
+        if(spawnedBall!= null && spawnedBall.GetComponent<BallSwipeShoot>().ballWasSwiped && numberOfBalls > 0)
         {
             timer += Time.deltaTime;
 
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(numberOfBalls <= 0)
+        if(spawnedBall != null && numberOfBalls <= 0 && !spawnedBall.GetComponent<BallManager>().hasWon)
         {
             defeatPanel.SetActive(true);
 
