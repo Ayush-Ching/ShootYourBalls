@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 
                 timer = 0;
                 Destroy(spawnedBall, 2f);
+                Destroy(spawnedGoalPost.GetNamedChild("Motu"), 3f);
                 Destroy(spawnedGoalPost, 4f);
                 return;
             }
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if(timer > 3f)
+            if(timer > 2f)
             {
                 StartCoroutine(SpawnNextBall());
                 return;
@@ -106,8 +107,9 @@ public class GameManager : MonoBehaviour
             defeatPanel.SetActive(true);
 
             timer = 0;
-            Destroy(spawnedBall, 2f);
-            Destroy(spawnedGoalPost, 4f);
+            Destroy(spawnedBall, 1f);
+            Destroy(spawnedGoalPost.GetNamedChild("Motu"), 2f);
+            Destroy(spawnedGoalPost, 3f);
             return;
         }
     }
