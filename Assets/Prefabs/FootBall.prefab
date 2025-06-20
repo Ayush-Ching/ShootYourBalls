@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2961100c1a4a745822757cc3f37c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 0.05
+  forceMultiplier: 0.025
+  ballWasSwiped: 0
 --- !u!114 &1719733631242475440
 MonoBehaviour:
   m_ObjectHideFlags: 0
