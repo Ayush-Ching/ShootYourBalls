@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 victoryPanel.SetActive(true);
 
                 timer = 0;
-                numberOfBalls = numberOfBalls - 1;
+                //numberOfBalls = numberOfBalls - 1; NOT REQUIRED 
                 Destroy(spawnedBall, 1f);
                 Destroy(spawnedGoalPost.GetNamedChild("Motu"), 2f);
                 Destroy(spawnedGoalPost, 3f);
