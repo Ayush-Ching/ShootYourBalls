@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: b4e9d17a6567e834d9b825d905ef261a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - planePrefab: {fileID: 3681518269298309379, guid: 190bf49efbab60e458b67c1dcb5421dc,
+      type: 3}
+  - ballPrefab: {fileID: 919132149155446097, guid: dd3c35ba438a50945a90495fe2752638,
+      type: 3}
+  - goalPostPrefab: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - lookDownCommandPanel: {instanceID: 0}
+  - spawningBallPanel: {instanceID: 0}
+  - spawningGoalPostPanel: {instanceID: 0}
+  - victoryPanel: {instanceID: 0}
+  - defeatPanel: {instanceID: 0}
+  - pointsTextObject: {instanceID: 0}
+  - roundNumberPanel: {instanceID: 0}
+  - roundNumberText: {instanceID: 0}
+  - _XROriginGameObject: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
