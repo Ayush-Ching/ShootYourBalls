@@ -117,6 +117,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4474767130816652994}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f6e8d40e5fd48141a0e1943b31639f7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6270408509137826879}
   m_SourcePrefab: {fileID: 100100000, guid: 6f6e8d40e5fd48141a0e1943b31639f7, type: 3}
 --- !u!4 &3648883668188917284 stripped
 Transform:
@@ -193,6 +197,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22319508, y: 1.8098602, z: 2.0948884}
   m_Center: {x: -0.071573734, y: -0.1549108, z: 1.0074421}
+--- !u!54 &6270408509137826879
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172762014116983966}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &4357867380029711671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -269,7 +300,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 883b398423b41574e848d13209ff00f6,
         type: 3}
       propertyPath: m_Name
-      value: Remy@Goalkeeper Sidestep
+      value: Motu
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 883b398423b41574e848d13209ff00f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

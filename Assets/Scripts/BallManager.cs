@@ -1,10 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public class BallManager : MonoBehaviour
 {
     public bool hasWon;
     public bool wasVictoryAlreadyConfirmed = false;
-
 
     public BallManager()
     {
@@ -18,4 +18,6 @@ public class BallManager : MonoBehaviour
             hasWon = true;
         }
     }
+    
+    
 }

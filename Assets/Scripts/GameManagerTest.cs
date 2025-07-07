@@ -32,6 +32,8 @@ public class GameManagerTest : MonoBehaviour
 
     [Header("AR Root")]
     [SerializeField] private GameObject _XROriginGameObject;
+    [SerializeField] private GameObject GoalPanel;
+    [SerializeField] private GameObject LostPanel;
 
     private GameObject spawnedGoalPost;
     private GameObject spawnedBall;
@@ -43,10 +45,12 @@ public class GameManagerTest : MonoBehaviour
     private bool isGameOver = false;
     private float timer = 0f;
     private int totalRounds; // Total rounds is one more than the number of balls
+    
+
 
     private void Start()
     {
-        totalRounds = numberOfBalls; 
+        totalRounds = numberOfBalls;
         pointsText = pointsTextObject.GetComponent<TextMeshProUGUI>();
 
         lookDownCommandPanel.SetActive(true);
@@ -70,9 +74,9 @@ public class GameManagerTest : MonoBehaviour
         BallManager bm = spawnedBall.GetComponent<BallManager>();
         if (bm != null && !bm.wasVictoryAlreadyConfirmed && bm.hasWon)
         {
-            bm.wasVictoryAlreadyConfirmed = true;
             points++;
-
+            StartCoroutine(GoalCelebration());
+            bm.wasVictoryAlreadyConfirmed = true;
             Goalie goalie = spawnedGoalPost?.GetNamedChild("Motu")?.GetComponent<Goalie>();
             if (goalie != null)
                 goalie.moveSpeed *= 1.5f;
@@ -92,11 +96,11 @@ public class GameManagerTest : MonoBehaviour
                 return;
             }
         }
-
-        // Update score display
-        
-        
-        
+        // if (bm != null && !bm.wasVictoryAlreadyConfirmed && !bm.hasWon)
+        // {
+        //     bm.wasVictoryAlreadyConfirmed = true;
+        //     StartCoroutine(LostCelebration());
+        // }
 
         // Missed swipe? Trigger next round
         BallSwipeShoot bs = spawnedBall.GetComponent<BallSwipeShoot>();
@@ -107,6 +111,7 @@ public class GameManagerTest : MonoBehaviour
             if (timer > 2f)
             {
                 numberOfBalls--;
+                StartCoroutine(LostCelebration());
                 StartCoroutine(SpawnNextBall());
                 return;
             }
@@ -221,5 +226,27 @@ public class GameManagerTest : MonoBehaviour
         }
 
         roundNumberPanel.SetActive(false);
+    }
+    IEnumerator GoalCelebration()
+    {
+        BallManager bm = spawnedBall.GetComponent<BallManager>();
+        if (bm.hasWon && !bm.wasVictoryAlreadyConfirmed)
+        {
+            //wasVictoryAlreadyConfirmed = true;
+            GoalPanel.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            GoalPanel.SetActive(false);
+        }
+    }
+    IEnumerator LostCelebration()
+    {
+        BallManager bm = spawnedBall.GetComponent<BallManager>();
+        if (!bm.hasWon && !bm.wasVictoryAlreadyConfirmed)
+        {
+            //wasVictoryAlreadyConfirmed = true;
+            LostPanel.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            LostPanel.SetActive(false);
+        }
     }
 }
