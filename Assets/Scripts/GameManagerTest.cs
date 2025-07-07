@@ -62,6 +62,7 @@ public class GameManagerTest : MonoBehaviour
 
     private void Update()
     {
+        pointsText.text = $"    Points: {points}\n    Balls Left: {numberOfBalls}";
         if (isGameOver || spawnedBall == null)
             return;
 
@@ -93,10 +94,9 @@ public class GameManagerTest : MonoBehaviour
         }
 
         // Update score display
-        if (hasGameStarted)
-        {
-            pointsText.text = $"Points: {points}    Balls Left: {numberOfBalls}";
-        }
+        
+        
+        
 
         // Missed swipe? Trigger next round
         BallSwipeShoot bs = spawnedBall.GetComponent<BallSwipeShoot>();
