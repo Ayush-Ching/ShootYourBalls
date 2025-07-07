@@ -17,6 +17,8 @@ EditorBuildSettings:
   m_configObjects:
     Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: 0603687b2a749db40aa8ad81f75d71a0,
       type: 2}
+    Niantic.Lightship.AR.WorldPositioningSettings: {fileID: 11400000, guid: 5bdb3662bc47b664386e45e75f2fb986,
+      type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 606d2128cee1da04ca59733ed471852e,
       type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 0176f3a38b3ad4f4abc842691e87e8ce,
