@@ -2305,6 +2305,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1788685877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788685881}
+  - component: {fileID: 1788685882}
+  m_Layer: 0
+  m_Name: WPS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788685881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788685877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788685882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788685877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03c97d22480a3a45a61be2d8d0a785b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraMaganer: {fileID: 375900081}
+  positioningManager: {fileID: 2025750124}
+  objectHelper: {fileID: 2025750123}
 --- !u!1 &1791601999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,8 +3056,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2025750120}
   - component: {fileID: 2025750119}
-  - component: {fileID: 2025750122}
-  - component: {fileID: 2025750121}
+  - component: {fileID: 2025750124}
+  - component: {fileID: 2025750123}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -3051,7 +3098,7 @@ Transform:
   - {fileID: 420152840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2025750121
+--- !u!114 &2025750123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3060,11 +3107,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2025750118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
+  m_Script: {fileID: 11500000, guid: e96fe94adc4c5400a8e1eb762bc1bbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RaycastPrefab: {fileID: 0}
---- !u!114 &2025750122
+  _altitudeMode: 3
+  _altitudeOffset: 0
+--- !u!114 &2025750124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3073,12 +3121,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2025750118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f060b6385b3f4ae29b8ac6f41026615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlanePrefab: {fileID: 2221371398699115987, guid: cbb6159a3cd98ec4cbfa097754d8f036,
-    type: 3}
-  m_DetectionMode: -1
 --- !u!1 &2045834126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,3 +3461,4 @@ SceneRoots:
   - {fileID: 2068254215}
   - {fileID: 399907016}
   - {fileID: 1120904671}
+  - {fileID: 1788685881}

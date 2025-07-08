@@ -15,9 +15,17 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: 0603687b2a749db40aa8ad81f75d71a0,
+      type: 2}
+    Niantic.Lightship.AR.WorldPositioningSettings: {fileID: 11400000, guid: 5bdb3662bc47b664386e45e75f2fb986,
+      type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 606d2128cee1da04ca59733ed471852e,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 0176f3a38b3ad4f4abc842691e87e8ce,
       type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: cdec2dd872e4dc14e8e2f6f81bd0c457,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7b1ed950cfc90094188025724aa4e31d,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 41a7c1724aced53478942005bf7e5d0f,
       type: 2}

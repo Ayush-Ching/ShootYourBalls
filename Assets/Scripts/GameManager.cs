@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 victoryPanel.SetActive(true);
 
                 timer = 0;
-                //numberOfBalls = numberOfBalls - 1; NOT REQUIRED 
+                //numberOfBalls = numberOfBalls - 1; // NOT REQUIRED 
                 Destroy(spawnedBall, 1f);
                 Destroy(spawnedGoalPost.GetNamedChild("Motu"), 2f);
                 Destroy(spawnedGoalPost, 3f);
@@ -137,7 +137,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Instantiate(planePrefab, spawnPosition, Quaternion.identity);
+        //Instantiate(planePrefab, spawnPosition, Quaternion.identity);
+        WPS.Instance.SpawnObjectAtPositionFromCamera(planePrefab, spawnPosition);
         lookDownCommandPanel.SetActive(false);
         spawningBallPanel.SetActive(true);
 
@@ -148,7 +149,8 @@ public class GameManager : MonoBehaviour
         spawnPosition = cam.transform.position + cam.transform.forward * 2f;
         spawnPosition.y = floorHeight + 1f;
 
-        spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        //spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        spawnedBall = WPS.Instance.SpawnObjectAtPositionFromCamera(ballPrefab, spawnPosition);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(true);
 
@@ -156,7 +158,8 @@ public class GameManager : MonoBehaviour
 
         spawnPosition = cam.transform.position + cam.transform.forward * 10f;
         spawnPosition.y = floorHeight;
-        spawnedGoalPost = Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        //spawnedGoalPost = Instantiate(goalPostPrefab, spawnPosition, Quaternion.identity);
+        spawnedGoalPost = WPS.Instance.SpawnObjectAtPositionFromCamera(goalPostPrefab, spawnPosition);
         spawnedGoalPost.transform.forward = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z);
         spawningGoalPostPanel.SetActive(false);
         pointsTextObject.SetActive(true);
@@ -177,6 +180,7 @@ public class GameManager : MonoBehaviour
         spawnPosition = cam.transform.position + cam.transform.forward * 2f;
         spawnPosition.y = floorHeight + 1f;
 
-        spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        //spawnedBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        spawnedBall = WPS.Instance.SpawnObjectAtPositionFromCamera(ballPrefab, spawnPosition);
     }
 }
