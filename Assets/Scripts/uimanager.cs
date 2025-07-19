@@ -4,17 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class uimanager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public void playGame()
+
+    public static UIManager Instance { get; private set; }
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+    }
+
+    public void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void rules()
+    public void Rules()
     {
         SceneManager.LoadScene("Rules");
     }
-    public void exit()
+    public void Exit()
     {
         Application.Quit();
     }

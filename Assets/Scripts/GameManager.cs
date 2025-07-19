@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         hasGameStarted = false;
         timer = 0;
 
-        lookDownCommandPanel.SetActive(true);
+        //lookDownCommandPanel.SetActive(true);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(false);
         victoryPanel.SetActive(false);
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
 
         //Instantiate(planePrefab, spawnPosition, Quaternion.identity);
         WPS.Instance.SpawnObjectAtPositionFromCamera(planePrefab, spawnPosition);
-        lookDownCommandPanel.SetActive(false);
+        //lookDownCommandPanel.SetActive(false);
         spawningBallPanel.SetActive(true);
 
         floorHeight = spawnPosition.y;

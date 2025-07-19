@@ -53,7 +53,7 @@ public class GameManagerTest : MonoBehaviour
         totalRounds = numberOfBalls;
         pointsText = pointsTextObject.GetComponent<TextMeshProUGUI>();
 
-        lookDownCommandPanel.SetActive(true);
+        //lookDownCommandPanel.SetActive(true);
         spawningBallPanel.SetActive(false);
         spawningGoalPostPanel.SetActive(false);
         victoryPanel.SetActive(false);
@@ -147,7 +147,7 @@ public class GameManagerTest : MonoBehaviour
         }
 
         Instantiate(planePrefab, spawnPos, Quaternion.identity);
-        lookDownCommandPanel.SetActive(false);
+        //lookDownCommandPanel.SetActive(false);
         spawningBallPanel.SetActive(true);
 
         floorHeight = spawnPos.y;
@@ -178,6 +178,7 @@ public class GameManagerTest : MonoBehaviour
     {
         if (isGameOver) yield break;
 
+        yield return new WaitForSeconds(2f);
         timer = 0f;
         Destroy(spawnedBall);
         spawnedBall = null;

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class backbuttonscript : MonoBehaviour
+public class BackButtonScript : MonoBehaviour
 {
-   public void back()
+   public void Back()
     {
         SceneManager.LoadScene("Main Menu");
     }
