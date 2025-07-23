@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
 
 public class GameManagerTest : MonoBehaviour
@@ -127,6 +128,14 @@ public class GameManagerTest : MonoBehaviour
         }
     }
 
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
+
     private IEnumerator SpawnEverything()
     {
         yield return new WaitForSeconds(2f);
@@ -176,10 +185,10 @@ public class GameManagerTest : MonoBehaviour
 
     private IEnumerator SpawnNextBall()
     {
+        timer = 0f;
         if (isGameOver) yield break;
 
-        yield return new WaitForSeconds(2f);
-        timer = 0f;
+        //yield return new WaitForSeconds(2f);
         Destroy(spawnedBall);
         spawnedBall = null;
         yield return new WaitForSeconds(2f);
